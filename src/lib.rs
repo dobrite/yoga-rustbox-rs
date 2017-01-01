@@ -6,6 +6,7 @@ mod measurer;
 mod renderer;
 
 pub use renderer::Renderer;
+pub use measurer::Measurer;
 
 #[cfg(test)]
 mod tests {
