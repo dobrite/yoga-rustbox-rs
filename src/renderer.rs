@@ -2,15 +2,16 @@ use rand::Rng;
 
 use rand; // not in final version
 use rustbox;
+use yoga;
 use yoga_wrapper;
 
-pub struct Renderer {
-    pub rustbox: rustbox::RustBox,
+pub struct Renderer<'r> {
+    pub rustbox: &'r rustbox::RustBox,
     pub colors: Vec<rustbox::Color>,
 }
 
-impl Renderer {
-    pub fn new(rustbox: rustbox::RustBox) -> Renderer {
+impl<'r> Renderer<'r> {
+    pub fn new(rustbox: &rustbox::RustBox) -> Renderer {
         Renderer {
             rustbox: rustbox,
             // not in final version
@@ -24,8 +25,10 @@ impl Renderer {
                          rustbox::Color::White],
         }
     }
+}
 
-    pub fn render(&self, node: &yoga_wrapper::Node) {
+impl<'r> yoga::Renders for Renderer<'r> {
+    fn render(&self, node: &yoga_wrapper::Node) {
         // maybe take HL Node?
         let ct = node.get_child_count();
 

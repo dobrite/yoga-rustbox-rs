@@ -1,6 +1,9 @@
-extern crate yoga_wrapper;
 extern crate rustbox;
+extern crate yoga;
 extern crate yoga_rustbox;
+extern crate yoga_wrapper;
+
+use yoga::{Backend, Renders};
 
 use std::error::Error;
 use std::default::Default;
@@ -13,8 +16,6 @@ fn main() {
         Result::Ok(v) => v,
         Result::Err(e) => panic!("{}", e),
     };
-
-    let renderer = yoga_rustbox::Renderer::new(rustbox);
 
     let mut root = yoga_wrapper::Node::new();
     root.set_width(50.0);
@@ -36,12 +37,10 @@ fn main() {
 
     root.calculate_layout();
 
-    renderer.render(&root);
-
-    renderer.rustbox.present();
+    yoga_rustbox::Backend::new(&rustbox).draw(&root);
 
     loop {
-        match renderer.rustbox.poll_event(false) {
+        match rustbox.poll_event(false) {
             Ok(rustbox::Event::KeyEvent(key)) => {
                 match key {
                     Key::Char('q') => {
