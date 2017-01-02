@@ -7,3 +7,5 @@ $ cargo run --example c
 #### Output:
 
 ![Yoga "C" example](http://i.imgur.com/QwJKKm9.png)
+
+License: MIT (see MIT-LICENSE)
