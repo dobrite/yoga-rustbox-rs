@@ -4,6 +4,7 @@ version = "0.1.0"
 dependencies = [
  "rand 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)",
  "rustbox 0.9.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "yoga 0.1.0 (git+https://github.com/dobrite/yoga-rs.git)",
  "yoga-wrapper 0.1.0 (git+https://github.com/dobrite/yoga-wrapper-rs.git)",
 ]
 
@@ -171,9 +172,17 @@ version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "yoga"
+version = "0.1.0"
+source = "git+https://github.com/dobrite/yoga-rs.git#a61ed0ca20331f2e30d3fac3871f19b16c0bf911"
+dependencies = [
+ "yoga-wrapper 0.1.0 (git+https://github.com/dobrite/yoga-wrapper-rs.git)",
+]
+
+[[package]]
 name = "yoga-wrapper"
 version = "0.1.0"
-source = "git+https://github.com/dobrite/yoga-wrapper-rs.git#9ae092e3fc9af75ebf99e05c2186d92b17de6f75"
+source = "git+https://github.com/dobrite/yoga-wrapper-rs.git#3332b3fa475292db77662890cd2b05baabc2b82e"
 dependencies = [
  "gcc 0.3.41 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.18 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -201,4 +210,5 @@ dependencies = [
 "checksum termbox-sys 0.2.9 (registry+https://github.com/rust-lang/crates.io-index)" = "10d9d43ebd02bf98d71923b11cb20575aecb877b80793cba9b5e383144db7c36"
 "checksum winapi 0.2.8 (registry+https://github.com/rust-lang/crates.io-index)" = "167dc9d6949a9b857f3451275e911c3f44255842c1f7a76f33c55103a909087a"
 "checksum winapi-build 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "2d315eee3b34aca4797b2da6b13ed88266e6d612562a0c46390af8299fc699bc"
+"checksum yoga 0.1.0 (git+https://github.com/dobrite/yoga-rs.git)" = "<none>"
 "checksum yoga-wrapper 0.1.0 (git+https://github.com/dobrite/yoga-wrapper-rs.git)" = "<none>"
