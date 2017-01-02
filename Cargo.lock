@@ -182,7 +182,7 @@ dependencies = [
 [[package]]
 name = "yoga-wrapper"
 version = "0.1.0"
-source = "git+https://github.com/dobrite/yoga-wrapper-rs.git#3332b3fa475292db77662890cd2b05baabc2b82e"
+source = "git+https://github.com/dobrite/yoga-wrapper-rs.git#548016f58523e217348d6baa93006efc429ca525"
 dependencies = [
  "gcc 0.3.41 (registry+https://github.com/rust-lang/crates.io-index)",
  "libc 0.2.18 (registry+https://github.com/rust-lang/crates.io-index)",
