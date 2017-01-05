@@ -5,12 +5,12 @@ use rustbox;
 use yoga;
 use yoga_wrapper;
 
-pub struct Renderer<'r> {
-    pub rustbox: &'r rustbox::RustBox,
+pub struct Renderer<'rbox> {
+    pub rustbox: &'rbox rustbox::RustBox,
     pub colors: Vec<rustbox::Color>,
 }
 
-impl<'r> Renderer<'r> {
+impl<'rbox> Renderer<'rbox> {
     pub fn new(rustbox: &rustbox::RustBox) -> Renderer {
         Renderer {
             rustbox: rustbox,
@@ -27,7 +27,7 @@ impl<'r> Renderer<'r> {
     }
 }
 
-impl<'r> yoga::Renders for Renderer<'r> {
+impl<'rbox> yoga::Renders for Renderer<'rbox> {
     fn render(&self, node: &yoga_wrapper::Node) {
         // maybe take HL Node?
         let ct = node.get_child_count();

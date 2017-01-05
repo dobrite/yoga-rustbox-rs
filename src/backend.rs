@@ -8,12 +8,12 @@ use yoga::Renders as R;
 use measurer;
 use renderer;
 
-pub struct Backend<'r> {
-    renderer: renderer::Renderer<'r>,
+pub struct Backend<'rbox> {
+    renderer: renderer::Renderer<'rbox>,
     measurer: measurer::Measurer,
 }
 
-impl<'r> Backend<'r> {
+impl<'rbox> Backend<'rbox> {
     pub fn new(rustbox: &rustbox::RustBox) -> Backend {
         Backend {
             renderer: renderer::Renderer::new(rustbox),
@@ -27,16 +27,16 @@ impl<'r> Backend<'r> {
     }
 }
 
-impl<'r, 'm> yoga::Backend<'m> for Backend<'r> {
+impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
     type Color = i32;
-    type Renderer = renderer::Renderer<'r>;
+    type Renderer = renderer::Renderer<'rbox>;
     type Measurer = measurer::Measurer;
 
     fn render(&self, renderer: &renderer::Renderer, node: &yoga_wrapper::Node) {
         renderer.render(node)
     }
 
-    fn create_context<'s>(&'m self, text: &'s str) -> yoga_wrapper::Context<'s, 'm> {
+    fn create_context<'text>(&'meas self, text: &'text str) -> yoga_wrapper::Context<'text, 'meas> {
         yoga_wrapper::Context::new(text, &self.measurer)
     }
 }
