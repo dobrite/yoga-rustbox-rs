@@ -17,6 +17,8 @@ fn main() {
         Result::Err(e) => panic!("{}", e),
     };
 
+    let be = yoga_rustbox::Backend::new(&rustbox);
+
     let mut root = yoga_wrapper::Node::new();
     root.set_width(50.0);
     root.set_height(12.0);
@@ -25,7 +27,7 @@ fn main() {
 
     let mut text = yoga_wrapper::Node::new();
     text.set_measure_func(yoga_wrapper::measure);
-    text.set_context(&mut yoga_wrapper::Context::new("Yo!!!", &yoga_rustbox::Measurer {}));
+    text.set_context(&mut be.create_context("Yo!!!"));
 
     root.insert_child(&text, 0);
 
