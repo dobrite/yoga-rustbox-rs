@@ -20,11 +20,6 @@ impl<'rbox> Backend<'rbox> {
             measurer: measurer::Measurer {},
         }
     }
-
-    pub fn draw(&self, node: &yoga_wrapper::Node) {
-        self.render(&self.renderer, node);
-        self.renderer.rustbox.present();
-    }
 }
 
 impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
@@ -32,8 +27,14 @@ impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
     type Renderer = renderer::Renderer<'rbox>;
     type Measurer = measurer::Measurer;
 
-    fn render(&self, renderer: &renderer::Renderer, node: &yoga_wrapper::Node) {
-        renderer.render(node)
+    fn render(&self, node: &yoga_wrapper::Node) {
+        let renderer = self.get_renderer();
+        renderer.render(node);
+        renderer.rustbox.present();
+    }
+
+    fn get_renderer(&self) -> &renderer::Renderer<'rbox> {
+        &self.renderer
     }
 
     fn create_context<'text>(&'meas self, text: &'text str) -> yoga_wrapper::Context<'text, 'meas> {
