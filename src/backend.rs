@@ -2,8 +2,7 @@ use rustbox;
 use yoga;
 use yoga_wrapper;
 
-use yoga::Backend as B;
-use yoga::Renders as R;
+use yoga::Renders;
 
 use measurer;
 use renderer;
