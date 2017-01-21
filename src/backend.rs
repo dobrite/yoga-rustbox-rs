@@ -26,14 +26,14 @@ impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
     type Renderer = renderer::Renderer<'rbox>;
     type Measurer = measurer::Measurer;
 
-    fn render(&self, node: &yoga_wrapper::Node) {
+    fn render(&mut self, node: &yoga_wrapper::Node) {
         let renderer = self.get_renderer();
         renderer.render(node);
         renderer.rustbox.present();
     }
 
-    fn get_renderer(&self) -> &renderer::Renderer<'rbox> {
-        &self.renderer
+    fn get_renderer(&mut self) -> &mut renderer::Renderer<'rbox> {
+        &mut self.renderer
     }
 
     fn create_context<'text>(&'meas self, text: &'text str) -> yoga_wrapper::Context<'text, 'meas> {

@@ -28,7 +28,7 @@ impl<'rbox> Renderer<'rbox> {
 }
 
 impl<'rbox> yoga::Renders for Renderer<'rbox> {
-    fn render(&self, node: &yoga_wrapper::Node) {
+    fn render(&mut self, node: &yoga_wrapper::Node) {
         // maybe take HL Node?
         let ct = node.get_child_count();
 
