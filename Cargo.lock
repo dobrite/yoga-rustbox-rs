@@ -174,7 +174,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "yoga"
 version = "0.1.0"
-source = "git+https://github.com/dobrite/yoga-rs.git#dc4462e50d5ed8e8a73f4149b310339735c6d821"
+source = "git+https://github.com/dobrite/yoga-rs.git#b0ea9154d00a255cdd9efb9e256e26021c4d533e"
 dependencies = [
  "yoga-wrapper 0.1.0 (git+https://github.com/dobrite/yoga-wrapper-rs.git)",
 ]
