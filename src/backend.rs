@@ -25,7 +25,6 @@ impl<'rbox> Backend<'rbox> {
 impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
     type Color = i32;
     type Renderer = renderer::Renderer<'rbox>;
-    type Measurer = measurer::Measurer;
 
     fn render(&mut self, node: &yoga::Renderable) {
         let renderer = self.get_renderer();
