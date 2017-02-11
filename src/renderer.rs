@@ -27,11 +27,8 @@ impl<'rbox> Renderer<'rbox> {
     }
 }
 
-impl<'rbox> yoga::Renders for Renderer<'rbox> {
-    fn render(&mut self, node: &yoga_wrapper::Node) {
-        // maybe take HL Node?
-        let ct = node.get_child_count();
-
+impl<'rbox, R: yoga::Renderable + ?Sized> yoga::Renders<R> for Renderer<'rbox> {
+    fn render(&mut self, node: &R) {
         let width = node.get_layout_width() as usize;
         let height = node.get_layout_height() as usize;
         let top = node.get_layout_top() as usize;
@@ -48,9 +45,9 @@ impl<'rbox> yoga::Renders for Renderer<'rbox> {
                                &format!("{:1$}", "", width));
         }
 
-        for i in 0..ct {
-            let child = node.get_child(i);
-            self.render(&child);
+        for i in 0..node.get_child_count() {
+            let child = node.get_child(i).unwrap();
+            self.render(child);
         }
     }
 }

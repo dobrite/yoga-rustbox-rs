@@ -3,6 +3,7 @@ use yoga;
 use yoga_wrapper;
 
 use yoga::Renders;
+use yoga::Renderable;
 
 use measurer;
 use renderer;
@@ -26,7 +27,7 @@ impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
     type Renderer = renderer::Renderer<'rbox>;
     type Measurer = measurer::Measurer;
 
-    fn render(&mut self, node: &yoga_wrapper::Node) {
+    fn render(&mut self, node: &yoga::Renderable) {
         let renderer = self.get_renderer();
         renderer.render(node);
         renderer.rustbox.present();
