@@ -5,6 +5,8 @@ use rustbox;
 use yoga;
 use yoga_wrapper;
 
+use yoga::Renders;
+
 pub struct Renderer<'rbox> {
     pub rustbox: &'rbox rustbox::RustBox,
     pub colors: Vec<rustbox::Color>,
@@ -25,10 +27,8 @@ impl<'rbox> Renderer<'rbox> {
                          rustbox::Color::White],
         }
     }
-}
 
-impl<'rbox, R: yoga::Renderable + ?Sized> yoga::Renders<R> for Renderer<'rbox> {
-    fn render(&mut self, node: &R) {
+    fn walk(&mut self, node: &yoga::Renderable<rustbox::Color>) {
         let width = node.get_layout_width() as usize;
         let height = node.get_layout_height() as usize;
         let top = node.get_layout_top() as usize;
@@ -49,5 +49,14 @@ impl<'rbox, R: yoga::Renderable + ?Sized> yoga::Renders<R> for Renderer<'rbox> {
             let child = node.get_child(i).unwrap();
             self.render(child);
         }
+    }
+}
+
+impl<'rbox> yoga::Renders for Renderer<'rbox> {
+    type Color = rustbox::Color;
+
+    fn render(&mut self, node: &yoga::Renderable<rustbox::Color>) {
+        self.walk(node);
+        self.rustbox.present();
     }
 }

@@ -23,14 +23,7 @@ impl<'rbox> Backend<'rbox> {
 }
 
 impl<'rbox, 'meas> yoga::Backend<'meas> for Backend<'rbox> {
-    type Color = i32;
     type Renderer = renderer::Renderer<'rbox>;
-
-    fn render(&mut self, node: &yoga::Renderable) {
-        let renderer = self.get_renderer();
-        renderer.render(node);
-        renderer.rustbox.present();
-    }
 
     fn get_renderer(&mut self) -> &mut renderer::Renderer<'rbox> {
         &mut self.renderer
