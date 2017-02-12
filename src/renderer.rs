@@ -7,6 +7,9 @@ use yoga_wrapper;
 
 use yoga::Renders;
 
+use Backend;
+use Builder;
+
 pub struct Renderer<'rbox> {
     pub rustbox: &'rbox rustbox::RustBox,
     pub colors: Vec<rustbox::Color>,
@@ -54,8 +57,9 @@ impl<'rbox> Renderer<'rbox> {
 
 impl<'rbox> yoga::Renders for Renderer<'rbox> {
     type Color = rustbox::Color;
+    type Builder = Builder;
 
-    fn render(&mut self, node: &yoga::Renderable<rustbox::Color>) {
+    fn render(&mut self, node: &yoga::Renderable<Self::Color>) {
         self.walk(node);
         self.rustbox.present();
     }

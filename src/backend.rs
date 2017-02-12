@@ -5,6 +5,7 @@ use yoga_wrapper;
 use yoga::Renders;
 use yoga::Renderable;
 
+use builder;
 use measurer;
 use renderer;
 
