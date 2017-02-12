@@ -55,7 +55,7 @@ impl<'rbox> Renderer<'rbox> {
     }
 }
 
-impl<'rbox> yoga::Renders for Renderer<'rbox> {
+impl<'rbox, 'meas> yoga::Renders<'meas> for Renderer<'rbox> {
     type Color = rustbox::Color;
     type Builder = Builder;
 
