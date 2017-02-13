@@ -24,6 +24,6 @@ impl<'meas> yoga::Builds<'meas, rustbox::Color> for Builder {
     }
 
     fn text<'t, 'a: 't>(&'a self, text: &'t str) -> yoga::Text<'t, rustbox::Color> {
-        yoga::Text::new(text)
+        yoga::Text::new(text, &mut self.create_context(text))
     }
 }

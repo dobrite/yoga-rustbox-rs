@@ -3,7 +3,7 @@ extern crate yoga;
 extern crate yoga_rustbox;
 extern crate yoga_wrapper;
 
-use yoga::{Backend, Renders, Renderable};
+use yoga::{Backend, Builds, Renders, Renderable};
 
 use std::error::Error;
 use std::default::Default;
@@ -17,9 +17,11 @@ fn main() {
         Result::Err(e) => panic!("{}", e),
     };
 
-    let text = yoga::Text::new("Yo!!!");
+    let builder = yoga_rustbox::Builder::new();
 
-    let mut root = yoga::View::new();
+    let text = builder.text("Yo!!!");
+
+    let mut root = builder.view();
     root.set_width(50.0);
     root.set_height(12.0);
     root.set_flex_direction(yoga_wrapper::FlexDirection::Row);
@@ -29,7 +31,7 @@ fn main() {
 
     root.calculate_layout();
 
-    yoga_rustbox::Backend::new(&rustbox).get_renderer().render(&root);
+    yoga_rustbox::Backend::new(&rustbox).render(&root);
 
     loop {
         match rustbox.poll_event(false) {

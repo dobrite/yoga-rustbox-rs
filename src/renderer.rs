@@ -11,8 +11,8 @@ use Backend;
 use Builder;
 
 pub struct Renderer<'rbox> {
-    pub rustbox: &'rbox rustbox::RustBox,
-    pub colors: Vec<rustbox::Color>,
+    pub rustbox: &'rbox rustbox::RustBox, // TODO no pub
+    pub colors: Vec<rustbox::Color>, // TODO no pub
 }
 
 impl<'rbox> Renderer<'rbox> {
