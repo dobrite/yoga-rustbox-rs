@@ -19,7 +19,7 @@ fn main() {
 
     let builder = yoga_rustbox::Builder::new();
 
-    let mut text = builder.text("Yo!");
+    let mut text = builder.view();
     text.set_height(3.0);
     text.set_align_self(yoga_wrapper::Align::Center);
     text.set_flex_grow(1.0);
