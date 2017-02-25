@@ -1,6 +1,3 @@
-use rand::Rng;
-
-use rand; // not in final version
 use rustbox;
 use yoga;
 use yoga_wrapper;
@@ -11,24 +8,12 @@ use Backend;
 use Builder;
 
 pub struct Renderer<'rbox> {
-    pub rustbox: &'rbox rustbox::RustBox, // TODO no pub
-    pub colors: Vec<rustbox::Color>, // TODO no pub
+    rustbox: &'rbox rustbox::RustBox,
 }
 
 impl<'rbox> Renderer<'rbox> {
     pub fn new(rustbox: &rustbox::RustBox) -> Renderer {
-        Renderer {
-            rustbox: rustbox,
-            // not in final version
-            colors: vec![rustbox::Color::Black,
-                         rustbox::Color::Red,
-                         rustbox::Color::Green,
-                         rustbox::Color::Yellow,
-                         rustbox::Color::Blue,
-                         rustbox::Color::Magenta,
-                         rustbox::Color::Cyan,
-                         rustbox::Color::White],
-        }
+        Renderer { rustbox: rustbox }
     }
 
     fn walk(&mut self, node: &yoga::Renderable<rustbox::Color>) {
@@ -37,14 +22,19 @@ impl<'rbox> Renderer<'rbox> {
         let top = node.get_layout_top() as usize;
         let left = node.get_layout_left() as usize;
 
-        let color = *rand::thread_rng().choose(&self.colors).unwrap();
+        let color = node.get_color();
+        let background_color = match *node.get_background_color() {
+            Some(yoga::style::BackgroundColor::Transparent) => rustbox::Color::Black,
+            Some(yoga::style::BackgroundColor::Color(c)) => c,
+            None => rustbox::Color::Black,
+        };
 
         for y in top..(top + height) {
             self.rustbox.print(left,
                                y,
                                rustbox::RB_BOLD,
-                               rustbox::Color::White,
-                               color,
+                               rustbox::Color::White, // TODO use color
+                               background_color,
                                &format!("{:1$}", "", width));
         }
 
