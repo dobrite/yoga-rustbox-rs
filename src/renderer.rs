@@ -1,10 +1,8 @@
 use rustbox;
 use yoga;
-use yoga_wrapper;
 
 use yoga::Renders;
 
-use Backend;
 use Builder;
 
 pub struct Renderer<'rbox> {

@@ -3,7 +3,7 @@ extern crate yoga;
 extern crate yoga_rustbox;
 extern crate yoga_wrapper;
 
-use yoga::{Backend, Builds, Renders, Renderable};
+use yoga::{Backend, Builds, Renderable};
 
 use std::error::Error;
 use std::default::Default;
@@ -23,7 +23,7 @@ fn main() {
     text.set_color(Some(rustbox::Color::White));
 
     let mut text2 = builder.text("Yo!!!");
-    text.set_color(Some(rustbox::Color::Yellow));
+    text2.set_color(Some(rustbox::Color::Yellow));
 
     let mut root = builder.view();
     root.set_width(50.0);
