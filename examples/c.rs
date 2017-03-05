@@ -42,7 +42,7 @@ fn main() {
 
     root.calculate_layout();
 
-    yoga_rustbox::Backend::new(&rustbox).render(&root);
+    yoga_rustbox::Backend::new(&rustbox).render(&root, &mut None);
 
     loop {
         match rustbox.poll_event(false) {

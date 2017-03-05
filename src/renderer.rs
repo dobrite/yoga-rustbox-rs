@@ -43,20 +43,26 @@ impl<'rbox> Renderer<'rbox> {
             }
         }
 
-
         for i in 0..node.get_child_count() {
             let child = node.get_child(i).unwrap();
-            self.render(child);
+            self.walk(child);
         }
     }
 }
 
 impl<'rbox, 'meas> yoga::Renders<'meas> for Renderer<'rbox> {
     type Color = rustbox::Color;
+    type Input = Option<bool>;
+    type Output = Option<bool>;
     type Builder = Builder;
 
-    fn render(&mut self, node: &yoga::Renderable<Self::Color>) {
+    fn render(
+        &mut self,
+        node: &yoga::Renderable<Self::Color>,
+        input: &mut Self::Input
+    ) -> Self::Output {
         self.walk(node);
         self.rustbox.present();
+        None
     }
 }
