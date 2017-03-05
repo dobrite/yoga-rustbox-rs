@@ -1,8 +1,7 @@
+use measurer;
 use rustbox;
 use yoga;
 use yoga_wrapper;
-
-use measurer;
 
 pub struct Builder {
     measurer: measurer::Measurer,
@@ -15,9 +14,10 @@ impl Builder {
 }
 
 impl<'meas> yoga::Builds<'meas, rustbox::Color> for Builder {
-    fn create_context<'text>(&'meas self,
-                             text: &'text str)
-                             -> Box<yoga_wrapper::Context<'text, 'meas>> {
+    fn create_context<'text>(
+        &'meas self,
+        text: &'text str
+    ) -> Box<yoga_wrapper::Context<'text, 'meas>> {
         Box::new(yoga_wrapper::Context::new(text, &self.measurer))
     }
 

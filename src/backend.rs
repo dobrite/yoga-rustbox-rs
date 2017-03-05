@@ -1,7 +1,6 @@
+use renderer;
 use rustbox;
 use yoga;
-
-use renderer;
 
 pub struct Backend<'rbox> {
     renderer: renderer::Renderer<'rbox>,

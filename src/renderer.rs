@@ -1,9 +1,8 @@
+use Builder;
 use rustbox;
 use yoga;
 
 use yoga::Renders;
-
-use Builder;
 
 pub struct Renderer<'rbox> {
     rustbox: &'rbox rustbox::RustBox,

@@ -3,13 +3,13 @@ extern crate yoga;
 extern crate yoga_rustbox;
 extern crate yoga_wrapper;
 
-use yoga::{Backend, Builds, Renderable};
-
-use std::error::Error;
-use std::default::Default;
+use rustbox::Key;
 
 use rustbox::RustBox;
-use rustbox::Key;
+use std::default::Default;
+
+use std::error::Error;
+use yoga::{Backend, Builds, Renderable};
 
 fn main() {
     let rustbox = match RustBox::init(Default::default()) {
