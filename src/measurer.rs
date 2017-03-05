@@ -1,9 +1,8 @@
 use yoga_wrapper;
-use yoga_wrapper::Measures;
 
 pub struct Measurer {}
 
-impl Measures for Measurer {
+impl yoga_wrapper::Measures for Measurer {
     fn measure(&self, text: &str) -> yoga_wrapper::Size {
         yoga_wrapper::Size {
             width: text.len() as f32,
