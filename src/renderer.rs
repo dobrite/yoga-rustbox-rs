@@ -56,11 +56,7 @@ impl<'rbox, 'meas> yoga::Renders<'meas> for Renderer<'rbox> {
     type Output = Option<bool>;
     type Builder = Builder;
 
-    fn render(
-        &mut self,
-        node: &yoga::Renderable<Self::Color>,
-        input: &mut Self::Input
-    ) -> Self::Output {
+    fn render(&mut self, node: &yoga::Renderable<Self::Color>, input: Self::Input) -> Self::Output {
         self.walk(node);
         self.rustbox.present();
         None
