@@ -1,5 +1,4 @@
 extern crate yoga;
-extern crate yoga_wrapper;
 extern crate rustbox;
 
 mod backend;
