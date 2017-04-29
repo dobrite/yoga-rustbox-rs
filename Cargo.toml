@@ -6,4 +6,3 @@ authors = ["Dave O <davidobrite@gmail.com>"]
 [dependencies]
 rustbox = "0.9.0"
 yoga = { git = "https://github.com/dobrite/yoga-rs.git" }
-yoga-wrapper = { git = "https://github.com/dobrite/yoga-wrapper-rs.git" }
