@@ -30,7 +30,7 @@ fn main() {
     root.set_height(12.0);
     root.set_flex_direction(yoga_wrapper::FlexDirection::Row);
     root.set_padding(yoga_wrapper::Edge::All, 2.0);
-    root.set_background_color(Some(yoga::style::BackgroundColor::Color(rustbox::Color::Cyan)));
+    root.set_background_color(Some(yoga::style::BackgroundColor::Color(rustbox::Color::Cyan)),);
 
     root.insert_child(&text, 0);
     root.insert_child(&text2, 0);

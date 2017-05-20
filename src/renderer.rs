@@ -29,15 +29,19 @@ impl<'rbox> Renderer<'rbox> {
         };
 
         if let Some(text) = node.get_text() {
-            self.rustbox.print(left, top, rustbox::RB_BOLD, color, background_color, text);
+            self.rustbox
+                .print(left, top, rustbox::RB_BOLD, color, background_color, text);
         } else {
             for y in top..(top + height) {
-                self.rustbox.print(left,
-                                   y,
-                                   rustbox::RB_BOLD,
-                                   color,
-                                   background_color,
-                                   &format!("{:1$}", "", width));
+                self.rustbox
+                    .print(
+                        left,
+                        y,
+                        rustbox::RB_BOLD,
+                        color,
+                        background_color,
+                        &format!("{:1$}", "", width),
+                    );
             }
         }
 
@@ -57,7 +61,7 @@ impl<'rbox, 'meas> yoga::Renders<'meas> for Renderer<'rbox> {
     fn render(
         &mut self,
         node: &yoga::Renderable<Self::Color>,
-        _input: Self::Input
+        _input: Self::Input,
     ) -> Self::Output {
         self.walk(node);
         self.rustbox.present();
